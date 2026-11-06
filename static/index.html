@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ec">
+  <meta name="description" content="성북구 정릉동, 길음동, 장위동 재개발 구술 자료를 지도에서 탐색하는 인터랙티브 아카이브">
+  <title>동네의 목소리 | 성북 재개발 구술 지도</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/main.js"></script>
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="처음 화면으로">
+        <span class="brand-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>성북<span class="brand-light">구술지도</span></span>
+      </a>
+      <div class="header-right">
+        <span class="issue-badge">ORAL HISTORY ATLAS <span class="issue-dot">•</span> 2026</span>
+        <a class="source-link" href="/source.pdf" target="_blank" rel="noopener">원본 구술 자료 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="headline">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> 성북구 재개발 구술 아카이브</p>
+          <h1 id="headline">바뀌는 동네,<br><em>남겨진 목소리.</em></h1>
+          <p class="lead">정릉·길음·장위. 같은 재개발을 두고 서로 다른 삶의 이야기가 있습니다.<br class="desktop-br"> 지도의 동네를 누르고, 기대와 우려를 나란히 살펴보세요.</p>
+        </div>
+        <div class="overview-stat" aria-label="아카이브 요약 통계">
+          <p>기록된 목소리</p>
+          <strong>13<span>건</span></strong>
+          <div class="stat-rule"></div>
+          <div class="stat-split"><span><i class="dot pos"></i>긍정 4건</span><span><i class="dot neg"></i>부정 12건</span></div>
+          <small>양면적 기록 3건 중복 집계</small>
+        </div>
+      </section>
+
+      <section class="explore" aria-label="지역 탐색과 구술 기록">
+        <div class="map-column">
+          <div class="panel-heading">
+            <div><span class="panel-kicker">01 / 지역 선택</span><h2>동네를 살펴보세요</h2></div>
+            <span class="map-scale"><span class="map-scale-dot"></span> 성북구 · 서울</span>
+          </div>
+          <div class="region-switch" role="group" aria-label="지역 선택">
+            <button type="button" class="region-btn active" data-region="전체" aria-pressed="true">전체 지역</button>
+            <button type="button" class="region-btn" data-region="정릉동" aria-pressed="false">정릉동</button>
+            <button type="button" class="region-btn" data-region="길음동" aria-pressed="false">길음동</button>
+            <button type="button" class="region-btn" data-region="장위동" aria-pressed="false">장위동</button>
+          </div>
+          <div class="map-shell" id="mapShell">
+            <div id="map" role="region" aria-label="카카오맵 행정동 경계 지도"></div>
+            <div id="mapPlaceholder" class="map-placeholder">
+              <div class="placeholder-art" aria-hidden="true"><span class="shape shape-1"></span><span class="shape shape-2"></span><span class="shape shape-3"></span><span class="shape shape-4"></span><span class="shape shape-5"></span></div>
+              <div class="placeholder-info">
+                <span class="placeholder-symbol">◈</span>
+                <h3>카카오 지도 연결 안내</h3>
+                <p id="mapMessage">지도 표시를 위한 JavaScript 키를 설정하면 실제 행정동 경계를 클릭할 수 있습니다.</p>
+                <code>KAKAO_JAVASCRIPT_KEY=발급받은_키</code>
+                <a href="https://developers.kakao.com" target="_blank" rel="noopener">카카오 디벨로퍼스에서 발급받기 ↗</a>
+              </div>
+            </div>
+            <div class="map-legend" id="mapLegend"><span><i class="legend-swatch swatch-normal"></i>대상 지역</span><span><i class="legend-swatch swatch-selected"></i>선택된 지역</span></div>
+            <div class="map-footnote">지도: Kakao Maps · 경계: SGIS / admdongkor (2026.10)</div>
+          </div>
+          <div class="region-cards" id="regionCards" aria-label="지역별 구술 기록 요약"></div>
+          <div class="context-note"><span aria-hidden="true">ⓘ</span><p>구술 자료는 정릉동·길음동·장위동 단위로 수집되었습니다. 지도는 실제 행정동 9개를 세 지역으로 묶어 보여주며, 특정 기록의 세부 행정동 위치를 임의로 추정하지 않습니다.</p></div>
+        </div>
+
+        <aside class="archive-column" aria-label="구술 기록 목록">
+          <div class="panel-heading archive-head">
+            <div><span class="panel-kicker">02 / 목소리 읽기</span><h2 id="archiveHeading">세 지역의 목소리</h2></div>
+            <span class="record-counter" id="recordCount">13건</span>
+          </div>
+          <p id="archiveHint" class="archive-hint">지도의 색칠된 지역을 클릭하거나 위의 동네 이름을 선택해 보세요.</p>
+          <div class="filter-toolbar" role="group" aria-label="찬반 반응 필터">
+            <button type="button" class="filter-btn active" data-stance="전체" aria-pressed="true">전체 <span id="allFilterCount">13</span></button>
+            <button type="button" class="filter-btn" data-stance="긍정" aria-pressed="false"><span class="filter-mark pos"></span>긍정 <span id="positiveFilterCount">4</span></button>
+            <button type="button" class="filter-btn" data-stance="부정" aria-pressed="false"><span class="filter-mark neg"></span>부정 <span id="negativeFilterCount">12</span></button>
+          </div>
+          <div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="발언·화자·주제 검색" aria-label="구술 자료 검색"><span class="search-key">검색</span></div>
+          <div class="archive-list" id="archiveList" aria-live="polite"></div>
+          <p class="list-footer">자료: 「사조방 구술 자료 2.pdf」 1–4쪽 · 연구 목적의 수작업 질적 분류</p>
+        </aside>
+      </section>
+
+      <section class="research-note" aria-labelledby="noteTitle">
+        <div class="note-leading"><span class="note-number">03 / 해석의 기준</span><h2 id="noteTitle">하나의 동네 안에도<br><em>서로 다른 입장이 있습니다.</em></h2></div>
+        <div class="note-text"><p>‘긍정’은 환경 개선·사업 추진 기대를, ‘부정’은 이주·보상·생업·공동체 손실에 대한 우려를 뜻합니다. 한 기록 안에 양쪽 내용이 있다면 각각의 탭에서 같은 화자의 서로 다른 발언을 확인할 수 있습니다.</p><p>표시된 건수는 표본 전체의 여론조사 수치가 아니며, 제공된 13개 구술 기록의 내용에 대한 질적 코딩 결과입니다. 원문 전문과 쪽수를 함께 제공하여 해석을 검증할 수 있습니다.</p></div>
+      </section>
+    </main>
+    <footer class="footer"><span>SEONGBUK ORAL HISTORY ATLAS</span><span>구술 자료 기반 연구용 웹사이트 · 지도 경계: SGIS / vuski/admdongkor, CC BY 4.0</span><span>Python + Kakao Maps</span></footer>
+  </div>
+</body>
+</html>
